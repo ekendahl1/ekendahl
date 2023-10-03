@@ -12,10 +12,14 @@
 
     <h2>Inventory List</h2>
     <ul>
-        Item
+        {% for item in inventory_data %}
         <li>
-           Brand (Type):
-            <span>Item Quantity</span>
+            <div class="item-info">
+                <div class="item-name">{{ item.product_name }}</div>
+                <div class="item-brand">{{ item.product_type }}</div>
+                <div class="item-type">{{ item.product_type }}</div>
+                <div class="item-quantity">{{ item.quantity }}</div>
+            </div>
             <form method="post" action="{{ url_for('change_quantity', item_id=loop.index0, quantity_change=1) }}">
                 <input type="submit" value="+" class="btn">
             </form>
@@ -23,7 +27,7 @@
                 <input type="submit" value="-" class="btn">
             </form>
         </li>
-        end
+        {% endfor %}
     </ul>
 
     <!-- Add forms for adding, editing, and deleting items here -->
