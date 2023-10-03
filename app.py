@@ -72,20 +72,6 @@ def delete_item(item_id):
     return redirect(url_for('index'))
 
 # Function to handle changes in inventory quantity
-@app.route('/change_quantity/<int:item_id>/<int:quantity_change>')
-def change_quantity(item_id, quantity_change):
-    # Change the quantity of the item in the inventory_data list
-    inventory_data[item_id]['quantity'] += quantity_change
-
-    # Redirect back to the homepage (or inventory list)
-    return redirect(url_for('index'))
-
-@app.route('/favicon.ico')
-def favicon():
-    return '', 204
-
-if __name__ == '__main__':
-    app.run(debug=True)
 @app.route('/change_quantity/<int:item_id>/<int:quantity_change>', methods=['POST'])
 def change_quantity(item_id, quantity_change):
     # Change the quantity of the item in the inventory_data list
