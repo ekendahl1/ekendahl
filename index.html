@@ -15,7 +15,7 @@
         Item
         <li>
            Brand (Type):
-            <span>{{ item.quantity }}</span>
+            <span>Item Quantity</span>
             <form method="post" action="{{ url_for('change_quantity', item_id=loop.index0, quantity_change=1) }}">
                 <input type="submit" value="+" class="btn">
             </form>
