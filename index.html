@@ -14,7 +14,7 @@
     <ul>
         Item
         <li>
-            {{ item.product_name }} ({{ item.product_type }}):
+           Brand (Type):
             <span>{{ item.quantity }}</span>
             <form method="post" action="{{ url_for('change_quantity', item_id=loop.index0, quantity_change=1) }}">
                 <input type="submit" value="+" class="btn">
@@ -23,7 +23,7 @@
                 <input type="submit" value="-" class="btn">
             </form>
         </li>
-        {% endfor %}
+        end
     </ul>
 
     <!-- Add forms for adding, editing, and deleting items here -->
