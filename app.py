@@ -79,4 +79,29 @@ def change_quantity(item_id, quantity_change):
 
     # Redirect back to the homepage (or inventory list)
     return redirect(url_for('index'))
+import cx_Oracle
 
+# Use your Oracle Cloud username, password, and the TNS name from the tnsnames.ora file in the unzipped wallet.
+connection_string = "ADMIN/ZcE011819!ZcE@project_medium"
+conn = cx_Oracle.connect(connection_string)
+cursor = conn.cursor()
+
+@app.route('/add', methods=['GET', 'POST'])
+def add_item():
+    if request.method == 'POST':
+        product_name = request.form['product_name']
+        product_type = request.form['product_type']
+        quantity = request.form['quantity']
+
+        sql = "INSERT INTO inventory (product_name, product_type, quantity) VALUES (:1, :2, :3)"
+        cursor.execute(sql, (product_name, product_type, quantity))
+        conn.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template('add.html')
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    cursor.close()
+    conn.close()
