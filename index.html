@@ -10,11 +10,19 @@
 <body>
     <h1>Inventory Management System</h1>
 
+    <!-- Display Current Inventory -->
+    <h2>Current Inventory</h2>
+    <ul id="inventory-list">
+    {% for item in inventory_data %}
+        <li class="inventory-item">
+            <strong>{{ item.product_name }}</strong> ({{ item.product_type }}) - Quantity: {{ item.quantity }}
+        </li>
+    {% endfor %}
+    </ul>
+
     <!-- Add New Item Section -->
     <h2>Add New Item</h2>
     <form method="post" action="{{ url_for('add_item') }}">
-        <!-- Add your form inputs for adding new items here -->
-        <!-- For example, input fields for product_name, product_type, and quantity -->
         <label for="product_name">Product Name:</label>
         <input type="text" name="product_name" required><br>
         <label for="product_type">Product Type:</label>
@@ -23,5 +31,6 @@
         <input type="number" name="quantity" required><br>
         <input type="submit" value="Add Item" class="btn">
     </form>
+
 </body>
 </html>
