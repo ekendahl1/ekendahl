@@ -4,7 +4,7 @@ import cx_Oracle
 app = Flask(__name__)
 
 # Use your Oracle Cloud username, password, and the TNS name from the tnsnames.ora file in the unzipped wallet.
-connection_string = "ADMIN/ZcE011819!ZcE@project_medium"
+connection_string = "ADMIN/***@project_medium"
 conn = cx_Oracle.connect(connection_string)
 cursor = conn.cursor()
 
